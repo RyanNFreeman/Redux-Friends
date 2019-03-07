@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import './App.css';
 import Login from './components/Login'
 import Home from './components/Home'
+import PrivateRoute from './components/PrivateRoute'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         </header>
         <Route path='/friends' component={Home} />
         <Route path='/login' component={Login}/>
+        <PrivateRoute exact path='/friend-adder' component={PrivateRoute}/>
       </div>
       </Router>
     );
