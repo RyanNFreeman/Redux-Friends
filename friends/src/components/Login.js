@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import { login } from '../actions'
 
 class Login extends React.Component {
@@ -15,6 +17,13 @@ class Login extends React.Component {
                 ...this.state.credentials,
                 [e.target.name]: e.target.value
             }
+        })
+    }
+
+    login = e => {
+        e.preventDefault();
+        this.props.login(this.state.credentials).then(() => {
+            this.props.history.push('/friend-adder')
         })
     }
 
@@ -48,4 +57,7 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect(
+    null, 
+    { login }
+)(Login);
